@@ -9,9 +9,78 @@ namespace criptografiaservidor
 {
     public class Server
     {
+        static string[] original = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/", "=" };
+
+        static string[] cripto = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o" };
+
         static void Main()
         {
             Arquivo();
+        }
+
+        public static string Criptografar(string valor)
+        {
+            int numero = valor.Length;
+
+            char[] letras = new char[numero];
+            string[] letrascript = new string[numero];
+
+            letras = valor.ToCharArray();
+
+
+            for (int i = 0; i < letras.Length; i++)
+            {
+                for (int j = 0; j < original.Length; j++)
+                {
+                    if (Convert.ToString(letras[i]) == original[j])
+                    {
+                        letrascript[i] = cripto[j];
+                    }
+                }
+
+            }
+
+            string palavracripto = "";
+
+            foreach (var item in letrascript)
+            {
+                palavracripto = palavracripto + "" + item;
+            }
+
+            return palavracripto;
+
+        }
+
+        public static string Decriptografar(string strValor1)
+        {
+            int numero = strValor1.Length;
+
+            char[] letras = new char[numero];
+            string[] letrascript = new string[numero];
+
+            letras = strValor1.ToCharArray();
+
+
+            for (int i = 0; i < letras.Length; i++)
+            {
+                for (int j = 0; j < original.Length; j++)
+                {
+                    if (Convert.ToString(letras[i]) == cripto[j])
+                    {
+                        letrascript[i] = original[j];
+                    }
+                }
+
+            }
+
+            string palavracripto = "";
+
+            foreach (var item in letrascript)
+            {
+                palavracripto = palavracripto + "" + item;
+            }
+
+            return palavracripto;
         }
 
         public static string Binariar(string valor)
@@ -54,7 +123,7 @@ namespace criptografiaservidor
         public static void Arquivo()
         {
 
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Felipe\Teste.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Felipe\Envio.txt");
 
             string operador;
             string val1;
@@ -69,17 +138,27 @@ namespace criptografiaservidor
             operador = Desbinariar(operador);
             val2 = Desbinariar(val2);
 
+            val1 = Decriptografar(val1);
+            operador = Decriptografar(operador);
+            val2 = Decriptografar(val2);
+
             result = Calcular(operador, val1, val2);
 
             string resultado;
 
-            resultado = Binariar(Convert.ToString(result));
+            resultado = Criptografar(Convert.ToString(result));
 
-            string nomeArquivo = @"C:\Felipe\Teste2.txt";
+            resultado = Binariar(resultado);
+
+            string nomeArquivo = @"C:\Felipe\Retorno.txt";
 
             StreamWriter writer = new StreamWriter(nomeArquivo);
 
-            writer.WriteLine(result);
+            writer.WriteLine(lines[0]);
+
+            writer.WriteLine(lines[1]);
+
+            writer.WriteLine(lines[2]);
 
             writer.WriteLine(resultado);
 
