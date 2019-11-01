@@ -123,7 +123,19 @@ namespace criptografiaservidor
         public static void Arquivo()
         {
 
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Felipe\Envio.txt");
+            if(System.IO.File.Exists(@"C:\Felipe\Retorno.txt")){
+                try
+                {
+                    System.IO.File.Delete(@"C:\Felipe\Retorno.txt");
+                }
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                    return;
+                }
+            }
+
+                string[] lines = System.IO.File.ReadAllLines(@"C:\Felipe\Envio.txt");
 
             string operador;
             string val1;
