@@ -9,9 +9,9 @@ namespace criptografiaservidor
 {
     public class Server
     {
-        static string[] original = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/", "=" };
+        static string[] original = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/", "=", "," };
 
-        static string[] cripto = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o" };
+        static string[] cripto = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p" };
 
         static void Main()
         {
