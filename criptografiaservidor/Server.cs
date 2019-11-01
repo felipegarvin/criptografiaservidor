@@ -123,10 +123,10 @@ namespace criptografiaservidor
         public static void Arquivo()
         {
 
-            if(System.IO.File.Exists(@"C:\Felipe\Retorno.txt")){
+            if(System.IO.File.Exists(@"C:\Temp\Retorno.txt")){
                 try
                 {
-                    System.IO.File.Delete(@"C:\Felipe\Retorno.txt");
+                    System.IO.File.Delete(@"C:\Temp\Retorno.txt");
                 }
                 catch (System.IO.IOException e)
                 {
@@ -135,7 +135,7 @@ namespace criptografiaservidor
                 }
             }
 
-                string[] lines = System.IO.File.ReadAllLines(@"C:\Felipe\Envio.txt");
+                string[] lines = System.IO.File.ReadAllLines(@"C:\Temp\Envio.txt");
 
             string operador;
             string val1;
@@ -162,7 +162,7 @@ namespace criptografiaservidor
 
             resultado = Binariar(resultado);
 
-            string nomeArquivo = @"C:\Felipe\Retorno.txt";
+            string nomeArquivo = @"C:\Temp\Retorno.txt";
 
             StreamWriter writer = new StreamWriter(nomeArquivo);
 
